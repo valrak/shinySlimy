@@ -9,9 +9,6 @@ function InventoryScreen(items, callback, mode) {
   const INV_SIZE_X = 100;
   const INV_SIZE_Y = 110;
 
-  const ITEMWINDOW_SIZE_X = 92;
-  const ITEMWINDOW_SIZE_Y = 80;
-
   const MAX_ITEMS_IN_ROW = 5;
   const MAX_ROWS = 4;
 
@@ -29,12 +26,10 @@ function InventoryScreen(items, callback, mode) {
   var marketMode = false;
   var useButtonText = "Use";
   var windowBefore = windowManager.getNextInOrder();
-  this.invPosX = INV_POS_X;
-  this.invPosY = INV_POS_Y;
-  this.invSizeX = INV_SIZE_X;
-  this.invSizeY = INV_SIZE_Y;
-  this.itemWindowSizeX = ITEMWINDOW_SIZE_X;
-  this.itemWindowSizeY = ITEMWINDOW_SIZE_Y;
+  this.x = INV_POS_X;
+  this.y = INV_POS_Y;
+  this.sizex = INV_SIZE_X;
+  this.sizey = INV_SIZE_Y;
   this.maxItemsInRow = MAX_ITEMS_IN_ROW;
   this.maxRows = MAX_ROWS;
   this.callback = callback;
@@ -44,19 +39,15 @@ function InventoryScreen(items, callback, mode) {
   if (mode === 'use' || windowBefore === SCREEN_NAMES.BATTLE ||
                         windowBefore === SCREEN_NAMES.MAPSCREEN) {
     mode = 'use';
-    useButtonText = "Use";
   }
   else if (mode === 'choose') {
     chooseMode = true;
-    useButtonText = "Choose";
   }
   else if (mode === 'buy') {
     chooseAndStay = true;
-    useButtonText = "Buy";
   }
   else if (mode === 'sell') {
     chooseAndStay = true;
-    useButtonText = "Sell";
   }
   var constrained = true;
 
@@ -84,7 +75,7 @@ function InventoryScreen(items, callback, mode) {
   var initPanel = () => {
     windowManager.register(WINDOW_NAME, this);
     // main panel
-    inventoryPanel = createPanel(this.invPosX, this.invPosY, this.invSizeX, this.invSizeY);
+    inventoryPanel = createPanel(this.x, this.y, this.sizex, this.sizey);
     var goLeft = function() { page -= 1; updatePages(); };
     var goRight = function() { page += 1; updatePages(); };
     var leftButton = createButton("button-generic",
@@ -109,8 +100,8 @@ function InventoryScreen(items, callback, mode) {
     inventoryPanel.addChild(leftButton);
     inventoryPanel.addChild(rightButton);
     inventoryPanel.addChild(closeButton);
-    pagesText = new Phaser.BitmapText(game, this.invSizeX - TEXT_POS * 2,
-                                      this.invSizeY - BUTTON_SIZE_Y - PADDING * 6,
+    pagesText = new Phaser.BitmapText(game, this.sizex - TEXT_POS * 2,
+                                      this.sizey - BUTTON_SIZE_Y - PADDING * 6,
                                       'font-normal',
                                       page + "/" + pages,
                                       TEXT_TOOLTIP_SIZE, 'left');

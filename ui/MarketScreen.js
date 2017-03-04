@@ -133,7 +133,7 @@ function MarketScreen(player) {
         if (typeof inventory.picker !== 'undefined' || inventory.picker !== null) {
           amount = inventory.picker.getNumber();
         }
-        this.player.buyItem(item, amount);
+        player.buyItem(item, amount);
         refresh();
       }
     }
@@ -158,7 +158,7 @@ function MarketScreen(player) {
         if (typeof inventory.picker !== 'undefined' || inventory.picker !== null) {
           amount = inventory.picker.getNumber();
         }
-        this.player.sellItem(item, amount);
+        player.sellItem(item, amount);
         refresh();
       }
     }

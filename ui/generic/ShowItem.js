@@ -19,6 +19,34 @@ function ShowItem(item, mode, parentWindow) {
   const TEXT_SIZE = 8;
   const TEXT_POS = 15;
 
+  const ITEMWINDOW_SIZE_X = 92;
+  const ITEMWINDOW_SIZE_Y = 80;
+
+  this.itemWindowSizeX = ITEMWINDOW_SIZE_X;
+  this.itemWindowSizeY = ITEMWINDOW_SIZE_Y;
+
+  var chooseMode = false;
+  var chooseAndStay = false;
+  var marketMode = false;
+  var useButtonText = "Use";
+
+  if (mode === 'use' || parentWindow.windowBefore === SCREEN_NAMES.BATTLE ||
+                        parentWindow.windowBefore === SCREEN_NAMES.MAPSCREEN) {
+    useButtonText = "Use";
+  }
+  else if (mode === 'choose') {
+    chooseMode = true;
+    useButtonText = "Choose";
+  }
+  else if (mode === 'buy') {
+    chooseAndStay = true;
+    useButtonText = "Buy";
+  }
+  else if (mode === 'sell') {
+    chooseAndStay = true;
+    useButtonText = "Sell";
+  }
+
   if (mode === 'use' || parentWindow.windowBefore === SCREEN_NAMES.BATTLE ||
                         parentWindow.windowBefore === SCREEN_NAMES.MAPSCREEN) {
     mode = 'use';
@@ -41,7 +69,7 @@ function ShowItem(item, mode, parentWindow) {
     itemPanel.destroy(true);
   }
   // detailed item panel
-  itemPanel = createPanel(parentWindow.invPosX + parentWindow.invSizeX * 3 + PADDING, parentWindow.invPosY, parentWindow.itemWindowSizeX, parentWindow.itemWindowSizeY);
+  itemPanel = createPanel(parentWindow.x + parentWindow.sizex * 3 + PADDING, parentWindow.y, this.itemWindowSizeX, this.itemWindowSizeY);
 
   itemImageBackground = new Phaser.Sprite(game, 20, PADDING + 11, ITEM_SHEET, item.name);
   itemImageBackground.scale.setTo(3);
@@ -56,7 +84,7 @@ function ShowItem(item, mode, parentWindow) {
                                     'font-normal',
                                     item.params.description,
                                     TEXT_TOOLTIP_SIZE, 'left');
-  itemDescription.maxWidth = parentWindow.itemWindowSizeX;
+  itemDescription.maxWidth = this.itemWindowSizeX;
   itemPanel.addChild(itemDescription);
 
   priceText = 'Price: '+item.params.price+'$';
@@ -85,15 +113,15 @@ function ShowItem(item, mode, parentWindow) {
                                       'font-normal',
                                       usableInText,
                                       TEXT_TOOLTIP_SIZE, 'left');
-    useDescription.maxWidth = parentWindow.itemWindowSizeX;
+    useDescription.maxWidth = this.itemWindowSizeX;
     itemPanel.addChild(useDescription);
   }
 
-  if (!(typeof mode === 'undefined' || mode === "" || mode === "view")) {
+  if (!(typeof mode === 'undefined' || mode === "" || mode === "view" || mode === null)) {
     if (!(mode === 'use' && item.params.consumable !== 1)) {
       var useButton = createButton("button-generic",
                                 PADDING * 2,
-                                parentWindow.itemWindowSizeY - BUTTON_SIZE_Y + 4 - PADDING * 2,
+                                this.itemWindowSizeY - BUTTON_SIZE_Y + 4 - PADDING * 2,
                                 BUTTON_SIZE_X + LARGE_BUTTON_MOD,
                                 BUTTON_SIZE_Y - 4,
                                 function () {
@@ -103,7 +131,7 @@ function ShowItem(item, mode, parentWindow) {
                                   }
                                   else if (chooseAndStay === true) {
                                     parentWindow.callback(item);
-                                    refresh();
+                                    parentWindow.refresh();
                                   }
                                   else {
                                     item.use();
@@ -111,13 +139,14 @@ function ShowItem(item, mode, parentWindow) {
                                       itemPanel.visible = false;
                                     }
 
-                                    refresh();
+                                    parentWindow.refresh();
                                   }
                                 }, useButtonText);
       itemPanel.addChild(useButton);
       if (mode === 'buy' || mode ==='sell') {
         this.picker = new NumberPicker(PADDING, ITEMWINDOW_SIZE_Y + PADDING);
         itemPanel.addChild(this.picker.pickerPanel);
+        parentWindow.picker = this.picker;
       }
     }
   }

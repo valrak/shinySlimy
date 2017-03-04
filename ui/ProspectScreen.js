@@ -12,7 +12,13 @@ function ProspectScreen(x, y, callback, player, opposition, items) {
   const ITEM_POS_X = 20;
   const ITEM_POS_Y = 55;
 
+  var itemPanel;
+
   windowManager.register(WINDOW_NAME, this);
+
+  var showItemWindow = (item, mode, parentWindow) => {
+    itemPanel = new ShowItem(item, mode, parentWindow);
+  };
 
   var messageText = new Phaser.BitmapText(game, 7,
                                     PADDING,
@@ -22,16 +28,18 @@ function ProspectScreen(x, y, callback, player, opposition, items) {
 
   // var sizex = messageText.textWidth + PADDING * 2 + 20;
   // var sizey = messageText.textHeight + PADDING * 4 + 5 + BUTTON_SIZE_Y;
+  this.x = x;
+  this.y = y;
+  this.sizex = 110;
+  this.sizey = 100;
 
-  var sizex = 150;
-  var sizey = 100;
 
-  var prospectPanel = createPanel(x, y, sizex, sizey);
-  var yesPositionX = sizex / 2 - BUTTON_SIZE_X - PADDING;
+  var prospectPanel = createPanel(x, y, this.sizex, this.sizey);
+  var yesPositionX = this.sizex / 2 - BUTTON_SIZE_X - PADDING;
 
   var yesButton = createButton("button-generic",
                         yesPositionX,
-                        sizey - BUTTON_SIZE_Y - PADDING,
+                        this.sizey - BUTTON_SIZE_Y - PADDING,
                         BUTTON_SIZE_X,
                         BUTTON_SIZE_Y,
                         function() { callback(true); closeWindow(); }, 'battle');
@@ -39,8 +47,8 @@ function ProspectScreen(x, y, callback, player, opposition, items) {
   prospectPanel.addChild(messageText);
   prospectPanel.addChild(yesButton);
   var noButton = createButton("button-generic",
-                        sizex / 2 + PADDING,
-                        sizey - BUTTON_SIZE_Y - PADDING,
+                        this.sizex / 2 + PADDING,
+                        this.sizey - BUTTON_SIZE_Y - PADDING,
                         BUTTON_SIZE_X,
                         BUTTON_SIZE_Y,
                         function() { callback(false); closeWindow(); }, 'avoid');
@@ -90,12 +98,20 @@ function ProspectScreen(x, y, callback, player, opposition, items) {
                                           TEXT_TOOLTIP_SIZE, 'left');
         prospectPanel.addChild(itemAmountText);
     }
+    itemButton.events.onInputUp.add(showItemWindow.bind(this, item, null, this));
     xOffset += offset;
   }
 
   function closeWindow() {
     windowManager.unregister(WINDOW_NAME);
     prospectPanel.destroy(true);
+    if (typeof itemPanel != 'undefined' && itemPanel !== null) {
+      itemPanel.destroy(true);
+    }
     prospectPanel = null;
+  }
+
+  function refresh() {
+
   }
 }
