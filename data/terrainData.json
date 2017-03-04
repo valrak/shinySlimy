@@ -1,0 +1,32 @@
+{
+  "grassland": {
+    "flags": [],
+    "type": ["normal"],
+    "danger": 0,
+    "rarity": 1
+    },
+  "rocks": {
+    "flags": [],
+    "type": ["normal"],
+    "danger": 7,
+    "rarity": 2
+    },
+  "forest": {
+    "flags": [],
+    "type": ["normal"],
+    "danger": 5,
+    "rarity": 1
+    },
+  "swamp": {
+    "flags": [],
+    "type": ["normal"],
+    "danger": 10,
+    "rarity": 3
+    },
+  "lake": {
+    "flags": [],
+    "type": ["normal"],
+    "danger": 3,
+    "rarity": 1
+    }
+}

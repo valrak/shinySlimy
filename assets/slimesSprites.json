@@ -1,0 +1,19 @@
+{"frames":
+[
+{"filename": "slime","frame": {"x":0,"y":0,"w":16,"h":16}
+},
+{"filename": "d4-slime","frame": {"x":0,"y":16,"w":16,"h":16}
+},
+{"filename": "d6-slime","frame": {"x":16,"y":16,"w":16,"h":16}
+},
+{"filename": "d8-slime","frame": {"x":32,"y":16,"w":16,"h":16}
+},
+{"filename": "d10-slime","frame": {"x":48,"y":16,"w":16,"h":16}
+},
+{"filename": "d12-slime","frame": {"x":64,"y":16,"w":16,"h":16}
+},
+{"filename": "d20-slime","frame": {"x":80,"y":16,"w":16,"h":16}
+}
+],
+"image":"slimes.png","size":{"w":80,"h":32},"scale":3
+}

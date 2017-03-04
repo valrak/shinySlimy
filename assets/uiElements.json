@@ -1,0 +1,15 @@
+{"frames":
+[
+{"filename": "down-arrow","frame": {"x":0,"y":0,"w":16,"h":19}
+},
+{"filename": "down-arrow-inactive","frame": {"x":16,"y":0,"w":16,"h":19}
+},
+{"filename": "health","frame": {"x":32,"y":0,"w":16,"h":16}
+},
+{"filename": "attack","frame": {"x":48,"y":0,"w":16,"h":16}
+},
+{"filename": "ranged","frame": {"x":64,"y":0,"w":16,"h":16}
+}
+],
+"image":"uiElements.png","size":{"w":100,"h":100},"scale":3
+}

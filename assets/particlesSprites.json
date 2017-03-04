@@ -1,0 +1,9 @@
+{"frames":
+[
+{"filename": "slime-shot","frame": {"x":0,"y":0,"w":16,"h":16}
+},
+{"filename": "damage-splash","frame": {"x":0,"y":16,"w":16,"h":16}
+}
+],
+"image":"particles.png","size":{"w":80,"h":32},"scale":3
+}

@@ -1,0 +1,29 @@
+{"frames":
+[
+{"filename": "carrot","frame": {"x":0,"y":0,"w":16,"h":16}
+},
+{"filename": "apple","frame": {"x":16,"y":0,"w":16,"h":16}
+},
+{"filename": "lettuce","frame": {"x":32,"y":0,"w":16,"h":16}
+},
+{"filename": "slime food","frame": {"x":48,"y":0,"w":16,"h":16}
+},
+{"filename": "oil","frame": {"x":0,"y":16,"w":16,"h":16}
+},
+{"filename": "balsam","frame": {"x":16,"y":16,"w":16,"h":16}
+},
+{"filename": "d4","frame": {"x":0,"y":32,"w":16,"h":16}
+},
+{"filename": "d6","frame": {"x":16,"y":32,"w":16,"h":16}
+},
+{"filename": "d8","frame": {"x":32,"y":32,"w":16,"h":16}
+},
+{"filename": "d10","frame": {"x":48,"y":32,"w":16,"h":16}
+},
+{"filename": "d12","frame": {"x":64,"y":32,"w":16,"h":16}
+},
+{"filename": "d20","frame": {"x":80,"y":32,"w":16,"h":16}
+}
+],
+"image":"items.png","size":{"w":80,"h":32},"scale":3
+}

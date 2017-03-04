@@ -1,0 +1,9 @@
+{"frames":
+[
+{"filename": "snake", "frame": {"x":0,"y":0,"w":16,"h":16}
+},
+{"filename": "snail", "frame": {"x":0,"y":16,"w":16,"h":16}
+}
+],
+"image":"monsters.png", "size": {"w":80,"h":32}, "scale":3
+}

@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>concept</title>
+		<script src="lib/phaser.min.js"></script>
+    <script src="Slime.js"></script>
+    <script src="Item.js"></script>
+    <script src="Player.js"></script>
+    <script src="Opposition.js"></script>
+    <script src="Battle.js"></script>
+    <script src="Expedition.js"></script>
+
+    <script src="states/intro.js"></script>
+    <script src="states/game.js"></script>
+
+    <script src="ui/InventoryScreen.js"></script>
+    <script src="ui/CharacterSheet.js"></script>
+    <script src="ui/MarketScreen.js"></script>
+    <script src="ui/TownScreen.js"></script>
+    <script src="ui/BattleScreen.js"></script>
+    <script src="ui/generic/UIParts.js"></script>
+    <script src="ui/generic/Constants.js"></script>
+    <script src="ui/generic/ShowItem.js"></script>
+    <script src="ui/generic/NumberPicker.js"></script>
+    <script src="ui/generic/WindowManager.js"></script>
+    <script src="ui/generic/SignalManager.js"></script>
+    <script src="ui/generic/ConfirmWindow.js"></script>
+    <script src="ui/ProspectScreen.js"></script>
+    <script src="ui/SidePanel.js"></script>
+    <script src="ui/MapScreen.js"></script>
+
+    </head>
+	<body>
+
+		<div id="game"></div>
+		<div id="orientation"></div>
+
+	<script type="text/javascript">
+
+    const MAXX = 800;
+    const MAXY = 600;
+
+    const SIZE_OF_SPRITE = 16;
+    const DEFAULT_SCALE = 3;
+
+    scale = DEFAULT_SCALE;
+
+    //const SPRITESHEET = 'slimesSprites';
+    const ITEM_SHEET = 'itemsSprites';
+    const SLIME_SHEET = 'slimesSprites';
+    const TERRAIN_SHEET = 'terrainSprites';
+    const PARTICLE_SHEET = 'particeSprites';
+    const BACKGROUND_SHEET = 'backgroundSprites';
+    const MONSTER_SHEET = 'monsterSprites';
+    const UI_SHEET = 'uiSprites';
+
+    // screen names
+    const SCREEN_NAMES = {
+      TOWN: 'town',
+      MARKET: 'market',
+      CHARACTER_SHEET: 'character-sheet',
+      INVENTORY: 'inventory',
+      BATTLE: 'battle',
+      MAPSCREEN: 'map'
+    }
+
+    // game constants
+    const STARTING_MONEY = 100;
+
+    const STATE_INTRO = "intro"
+    const STATE_GAME = "game"
+
+    const CONFIRM_X = 150;
+    const CONFIRM_Y = 200;
+
+    var game = new Phaser.Game(800, 600, Phaser.CANVAS, '', { preload: preload, create: create, update: update });
+
+    windowManager = new WindowManager();
+    signalManager = new SignalManager();
+    // state = STATE_INTRO;
+
+    var terrainData;
+    var itemsData;
+
+    function preload() {
+      game.load.json('itemsData', 'data/itemsData.json');
+      game.load.json('terrainData', 'data/terrainData.json');
+      game.load.json('monstersData', 'data/monstersData.json');
+      //game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+      //game.scale.setScreenSize();
+      // UI Parts
+      game.load.spritesheet('background-generic', 'assets/ui/background-generic.png');
+      game.load.spritesheet('background-scroll', 'assets/ui/background-scroll.png');
+      game.load.spritesheet('item-placeholder', 'assets/ui/item-placeholder.png');
+      game.load.spritesheet('button-generic', 'assets/ui/button-generic.png');
+      game.load.spritesheet('button-generic-hover', 'assets/ui/button-generic-hover.png');
+      game.load.spritesheet('cross', 'assets/ui/cross.png');
+
+      //this.game.load.atlas(SPRITESHEET, 'assets/slimesSprites.png', 'assets/slimesSprites.json');
+      this.game.load.atlas(ITEM_SHEET, 'assets/items.png', 'assets/itemsSprites.json');
+      this.game.load.atlas(SLIME_SHEET, 'assets/slimes.png', 'assets/slimesSprites.json');
+      this.game.load.atlas(MONSTER_SHEET, 'assets/monsters.png', 'assets/monsterSprites.json');
+      this.game.load.atlas(TERRAIN_SHEET, 'assets/terrain.png', 'assets/terrainSprites.json');
+      this.game.load.atlas(UI_SHEET, 'assets/ui/uiElements.png', 'assets/uiElements.json');
+      this.game.load.atlas(PARTICLE_SHEET, 'assets/particles.png', 'assets/particlesSprites.json');
+      this.game.load.atlas(BACKGROUND_SHEET, 'assets/backgrounds.png', 'assets/backgrounds.json');
+
+      game.load.spritesheet('down-arrow', 'assets/ui/down-arrow.png');
+      game.load.spritesheet('up-arrow', 'assets/ui/up-arrow.png');
+      game.load.spritesheet('up-left-arrow', 'assets/ui/up-left-arrow.png');
+      game.load.spritesheet('up-right-arrow', 'assets/ui/up-right-arrow.png');
+      game.load.spritesheet('down-arrow-inactive', 'assets/ui/down-arrow-inactive.png');
+
+      game.load.bitmapFont('font-normal', 'assets/ui/fonts/charmap-cellphone_white.png', 'assets/ui/fonts/charmap-cellphone_white.xml');
+      game.load.bitmapFont('font-text-white', 'assets/ui/fonts/charmap-cellphone_white.png', 'assets/ui/fonts/charmap-cellphone_white.xml');
+
+    }
+
+    function create() {
+      itemsData = game.cache.getJSON('itemsData');
+      terrainData = game.cache.getJSON('terrainData');
+      monstersData = game.cache.getJSON('monstersData');
+      player = new Player();
+
+      game.state.add('intro', introState);
+      game.state.add('game', gameState);
+      game.state.start('game');
+
+
+    }
+    //
+    function update() {
+
+  //    blueSlime.update();
+    //  redSlime.update();
+    }
+
+	</script>
+
+	</body>
+</html>

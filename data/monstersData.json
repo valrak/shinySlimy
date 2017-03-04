@@ -1,0 +1,36 @@
+{
+  "slime": {
+  "flags": [],
+  "type": ["slime"],
+  "hp": 1,
+  "attack": 1,
+  "defense": 0,
+  "ranged": 0,
+  "description": "slime found nearby lakes",
+  "ranged-shot": "slime-shot",
+  "level": 1,
+  "foundIn": ["lake", "swamp"]
+},
+  "snake": {
+  "flags": [],
+  "type": ["animal"],
+  "hp": 3,
+  "attack": 2,
+  "defense": 0,
+  "ranged": 0,
+  "description": "common snake",
+  "level": 1,
+  "foundIn": ["any"]
+},
+  "snail": {
+  "flags": [],
+  "type": ["animal"],
+  "hp": 5,
+  "attack": 1,
+  "defense": 0,
+  "ranged": 0,
+  "description": "like slime, but with a home",
+  "level": 1,
+  "foundIn": ["any"]
+}
+}

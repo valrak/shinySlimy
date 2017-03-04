@@ -1,0 +1,17 @@
+{"frames":
+[
+{"filename": "lake","frame": {"x":0,"y":0,"w":31,"h":12}
+},
+{"filename": "forest","frame": {"x":32,"y":0,"w":31,"h":12}
+},
+{"filename": "grassland","frame": {"x":63,"y":0,"w":31,"h":12}
+},
+{"filename": "rocks","frame": {"x":94,"y":0,"w":31,"h":12}
+},
+{"filename": "swamp","frame": {"x":125,"y":0,"w":31,"h":12}
+},
+{"filename": "town","frame": {"x":125,"y":0,"w":31,"h":12}
+}
+],
+"image":"terrain.png","size":{"w":80,"h":32},"scale":3
+}

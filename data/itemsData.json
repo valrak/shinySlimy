@@ -1,0 +1,114 @@
+{
+  "slime food": {
+  "flags": ["shop", "notFound"],
+  "type": ["food"],
+  "description": "instant plankton food for slimes",
+  "level": 1,
+  "stackable": 1,
+  "consumable": 0,
+  "price": 20
+},
+"carrot": {
+  "flags": ["shop"],
+  "type": ["battle"],
+  "foundIn": ["field"],
+  "description": "+1 ú for 1 turn",
+  "level": 1,
+  "stackable": 1,
+  "consumable": 1,
+  "rarity": 1,
+  "price": 10
+  },
+"lettuce": {
+  "flags": ["shop"],
+  "type": ["normal"],
+  "foundIn": ["field"],
+  "description": "+1 ď for 1 turn",
+  "level": 1,
+  "stackable": 1,
+  "consumable": 1,
+  "rarity": 1,
+  "price": 15
+  },
+"oil": {
+  "flags": ["shop"],
+  "type": ["normal"],
+  "foundIn": ["rocks"],
+  "description": "+1 ž for 1 turn",
+  "consumable": 1,
+  "stackable": 1,
+  "level": 7,
+  "rarity": 3,
+  "price": 10
+  },
+"balsam": {
+  "flags": ["shop"],
+  "type": ["normal"],
+  "foundIn": ["rocks"],
+  "description": "+2 ž for 1 turn",
+  "consumable": 1,
+  "level": 7,
+  "rarity": 5,
+  "price": 30
+  },
+  "d4": {
+    "flags": ["shop"],
+    "type": ["dice"],
+    "foundIn": [],
+    "description": "d4 dice",
+    "level": 10,
+    "rarity": 5,
+    "sides": 4,
+    "price": 500
+  },
+  "d6": {
+    "flags": ["shop"],
+    "type": ["dice"],
+    "foundIn": [],
+    "description": "d6 dice",
+    "level": 20,
+    "rarity": 5,
+    "sides": 6,
+    "price": 1000
+  },
+  "d8": {
+    "flags": ["shop"],
+    "type": ["dice"],
+    "foundIn": [],
+    "description": "d6 dice",
+    "level": 30,
+    "rarity": 5,
+    "sides": 8,
+    "price": 1200
+  },
+  "d10": {
+    "flags": ["shop"],
+    "type": ["dice"],
+    "foundIn": [],
+    "description": "d6 dice",
+    "level": 40,
+    "rarity": 5,
+    "sides": 10,
+    "price": 1500
+  },
+  "d12": {
+    "flags": ["shop"],
+    "type": ["dice"],
+    "foundIn": [],
+    "description": "d6 dice",
+    "level": 50,
+    "rarity": 5,
+    "sides": 12,
+    "price": 2000
+  },
+  "d20": {
+    "flags": ["shop"],
+    "type": ["dice"],
+    "foundIn": [],
+    "description": "d6 dice",
+    "level": 70,
+    "rarity": 5,
+    "sides": 20,
+    "price": 5000
+  }
+}
