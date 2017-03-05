@@ -42,7 +42,7 @@ function Expedition(player) {
     // player decides if he runs or go to battle
     function confirmCallback(result) {
       if (result === true) {
-        new BattleScreen(callback, this.player, monsters);
+        new BattleScreen(callback, this.player, monsters, items);
       }
       // run away, + danger level
       else {
@@ -62,15 +62,20 @@ function Expedition(player) {
     // next day - next encounter
     else {
       monsters = this.generateMonsters(tile, this.dangerLevel);
-      items = [new Item("d4"), new Item("carrot"), new Item("oil")];
+      items = this.generateItems(tile, this.dangerLevel);
       new ProspectScreen(CONFIRM_X, CONFIRM_Y, confirmCallback, this.player, monsters, items);
     }
   };
-
 
   this.generateMonsters = function(tile, dangerLevel) {
     var opposition = new Opposition();
     opposition.randomMonsters(tile, dangerLevel);
     return opposition;
+  };
+
+  this.generateItems = function(tile, dangerLevel) {
+    var loot = [];
+    loot = monsters.randomItems();
+    return loot;
   };
 }

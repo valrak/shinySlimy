@@ -121,4 +121,5 @@ function ProspectScreen(x, y, callback, player, opposition, items) {
   function refresh() {
 
   }
+
 }

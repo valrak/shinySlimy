@@ -6,7 +6,7 @@
   "attack": 1,
   "defense": 0,
   "ranged": 0,
-  "description": "slime found nearby lakes",
+  "description": "slime found nearby water",
   "ranged-shot": "slime-shot",
   "level": 1,
   "foundIn": ["lake", "swamp"]
@@ -20,7 +20,9 @@
   "ranged": 0,
   "description": "common snake",
   "level": 1,
-  "foundIn": ["any"]
+  "foundIn": ["any"],
+  "drops": {"carrot": 95,
+            "lettuce": 5}
 },
   "snail": {
   "flags": [],
@@ -31,6 +33,8 @@
   "ranged": 0,
   "description": "like slime, but with a home",
   "level": 1,
-  "foundIn": ["any"]
+  "foundIn": ["any"],
+  "drops": {"oil": 50,
+            "balsam": 50}
 }
 }

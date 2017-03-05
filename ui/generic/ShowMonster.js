@@ -39,8 +39,15 @@ function ShowMonster(monster, mode, parentWindow) {
   var monsterNameText = write('font-normal', PADDING, PADDING, monster.name, TEXT_SIZE, 0, MONSTER_COLORS[monster.mod]);
   monsterPanel.addChild(monsterNameText);
 
-  var statusMessage = "ž "+monster.params.hp+"\nú "+monster.params.attack+"\nď "+monster.params.ranged;
-  var monsterAttributesText = write('font-normal', PADDING, PADDING * 2 + TEXT_SIZE * 2, statusMessage, TEXT_SIZE, 0);
+  var typeMessage = "";
+  for (let type of monster.type) {
+    typeMessage += type+" "+typeMessage;
+  }
+  var monsterTypeText = write('font-normal', PADDING, PADDING * 2 + TEXT_SIZE, typeMessage, TEXT_SIZE, 0);
+  monsterPanel.addChild(monsterTypeText);
+
+  var attributesMessage = "ž "+monster.params.hp+"\nú "+monster.params.attack+"\nď "+monster.params.ranged;
+  var monsterAttributesText = write('font-normal', PADDING, PADDING * 4 + TEXT_SIZE * 2, attributesMessage, TEXT_SIZE, 0);
   monsterPanel.addChild(monsterAttributesText);
   // monsterDescription = new Phaser.BitmapText(game, PADDING, PADDING + 11,
   //                                   'font-normal',

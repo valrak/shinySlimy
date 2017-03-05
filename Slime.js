@@ -18,6 +18,14 @@ function Slime(name) {
 	this.name = name;
 	this.slime = true;
 	this.mod = "normal";
+	this.type = monstersData[name].type;
+
+	this.drops = new Map();
+	if (typeof monstersData[name].drops !== 'undefined') {
+		for (let loot in monstersData[name].drops) {
+			this.drops.set(loot, monstersData[name].drops[loot]);
+		}
+	}
 
 	if (this.name !== "slime") {
 		this.slime = false;

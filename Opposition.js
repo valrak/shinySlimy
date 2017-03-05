@@ -64,6 +64,26 @@ function Opposition() {
 
   };
 
+  this.randomItems = function() {
+    var items = [];
+    for (let monster of this.slimes) {
+      totalChanceSum = 0;
+      for (let drop of monster.drops) {
+        totalChanceSum += drop[1]; // should be 100, but for being sure...
+      }
+      randomNumber = Math.floor(Math.random() * totalChanceSum);
+      for (let drop of monster.drops) {
+        if (randomNumber <= drop[1]) {
+          newItem = new Item(drop[0]);
+          items.push(newItem);
+          break;
+        }
+      }
+    }
+    this.items = items;
+    return items;
+  };
+
   // switch position of two slimes
   this.switchSlimes = function(switchPositions, callback) {
     var transient = this.slimes[switchPositions[1]];

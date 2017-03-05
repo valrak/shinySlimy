@@ -1,6 +1,6 @@
 var battleScreen = {};
 
-function BattleScreen(outsideCallback, player, opposition) {
+function BattleScreen(outsideCallback, player, opposition, items) {
 
   const WINDOW_NAME = SCREEN_NAMES.BATTLE;
   const BATTLE_POS_X = 70;
@@ -181,17 +181,26 @@ function BattleScreen(outsideCallback, player, opposition) {
       offset += SLIME_POS_STEP;
     }
 
-
+    var resultMessage;
+    var acceptButtonText;
+    var result;
     // win / lose condition
-    if (livingPlayer <= 0 || livingOpposition <= 0) {
-      var resultMessage = "Victory";
-      var acceptButtonText = 'Good';
-      var result = 'victory';
-      if (livingPlayer <= 0) {
-        resultMessage = "Defeat";
-        result = 'defeat';
-        acceptButtonText = 'Oh no!';
+    if (livingOpposition <= 0 ) {
+      resultMessage = "Victory";
+      acceptButtonText = 'Good';
+      result = 'victory';
+      // put items in player inventory
+      for (let item of items) {
+        player.items.push(item);
       }
+      player.cleanItems();
+    }
+    if (livingPlayer <= 0) {
+      resultMessage = "Defeat";
+      result = 'defeat';
+      acceptButtonText = 'Oh no!';
+    }
+    if (typeof result !== 'undefined') {
       switchButton.input.enabled = false;
       battleButton.input.enabled = false;
       infoPanel = createPanel(BATTLE_SIZE_X / 2 - INFO_SIZE_X / 2, BATTLE_SIZE_Y / 2 - INFO_SIZE_Y / 2, INFO_SIZE_X, INFO_SIZE_Y);
