@@ -2,7 +2,6 @@ var showMonster = {};
 
 function ShowMonster(monster, mode, parentWindow) {
 
-//var showItem = (monster, mode, parentWindow) => {
   windowBefore = parentWindow.WINDOW_NAME;
 
   const BUTTON_SIZE_X = 18;

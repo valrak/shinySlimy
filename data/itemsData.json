@@ -15,7 +15,7 @@
   "description": "+1 ú for 1 turn",
   "level": 1,
   "stackable": 1,
-  "consumable": 1,
+  "consumable": "battle",
   "rarity": 1,
   "price": 10
   },
@@ -26,7 +26,7 @@
   "description": "+1 ď for 1 turn",
   "level": 1,
   "stackable": 1,
-  "consumable": 1,
+  "consumable": "battle",
   "rarity": 1,
   "price": 15
   },
@@ -35,7 +35,7 @@
   "type": ["normal"],
   "foundIn": ["rocks"],
   "description": "+1 ž for 1 turn",
-  "consumable": 1,
+  "consumable": "battle",
   "stackable": 1,
   "level": 7,
   "rarity": 3,
@@ -46,7 +46,7 @@
   "type": ["normal"],
   "foundIn": ["rocks"],
   "description": "+2 ž for 1 turn",
-  "consumable": 1,
+  "consumable": "battle",
   "level": 7,
   "rarity": 5,
   "price": 30

@@ -42,24 +42,6 @@ function ShowItem(item, mode, parentWindow) {
     useButtonText = "Sell";
   }
 
-  if (mode === 'use' || parentWindow.windowBefore === SCREEN_NAMES.BATTLE ||
-                        parentWindow.windowBefore === SCREEN_NAMES.MAPSCREEN) {
-    mode = 'use';
-    useButtonText = "Use";
-  }
-  else if (mode === 'choose') {
-    chooseMode = true;
-    useButtonText = "Choose";
-  }
-  else if (mode === 'buy') {
-    chooseAndStay = true;
-    useButtonText = "Buy";
-  }
-  else if (mode === 'sell') {
-    chooseAndStay = true;
-    useButtonText = "Sell";
-  }
-
   if (typeof itemPanel != 'undefined' && itemPanel !== null) {
     itemPanel.destroy(true);
   }
@@ -94,8 +76,12 @@ function ShowItem(item, mode, parentWindow) {
 
   usableInText = null;
   if (typeof item.params.consumable !== 'undefined' &&
-    item.params.consumable === 1 && item.params.type.indexOf('normal') !== -1) {
+    item.params.consumable === "battle" && item.params.type.indexOf('normal') !== -1) {
     usableInText = "Use item in battle";
+  }
+  if (typeof item.params.consumable !== 'undefined' &&
+    item.params.consumable === "expedition" && item.params.type.indexOf('normal') !== -1) {
+    usableInText = "Use item in expedition";
   }
   if (item.params.type.indexOf('dice') !== -1) {
     usableInText = "Put dice into slime";
@@ -112,39 +98,43 @@ function ShowItem(item, mode, parentWindow) {
     itemPanel.addChild(useDescription);
   }
 
-  if (!(typeof mode === 'undefined' || mode === "" || mode === "view" || mode === null)) {
-    if (!(mode === 'use' && item.params.consumable !== 1)) {
-      var useButton = createButton("button-generic",
-                                PADDING * 2,
-                                this.itemWindowSizeY - BUTTON_SIZE_Y + 4 - PADDING * 2,
-                                BUTTON_SIZE_X + LARGE_BUTTON_MOD,
-                                BUTTON_SIZE_Y - 4,
-                                function () {
-                                  if (chooseMode === true) {
-                                    closeWindow();
-                                    parentWindow.callback(item);
-                                  }
-                                  else if (chooseAndStay === true) {
-                                    parentWindow.callback(item);
-                                    callParentRefresh();
-                                  }
-                                  else {
-                                    item.use();
-                                    if (item.active === false) {
-                                      itemPanel.visible = false;
+  //if (!(typeof mode === 'undefined' || mode === "" || mode === "view" || mode === null)) {
+    //if (!(mode === 'use' && item.params.consumable !== 0)) {
+    if (typeof mode !== 'undefined' || mode !== null || mode !== "" || mode === "splash") {
+
+      // use the items only in the correct window
+      if ((mode === "use" && parentWindow.windowBefore === item.params.consumable) || mode === "choose" || mode === "buy" || mode === "sell") {
+        var useButton = createButton("button-generic",
+                                  PADDING * 2,
+                                  this.itemWindowSizeY - BUTTON_SIZE_Y + 4 - PADDING * 2,
+                                  BUTTON_SIZE_X + LARGE_BUTTON_MOD,
+                                  BUTTON_SIZE_Y - 4,
+                                  function () {
+                                    if (chooseMode === true) {
+                                      closeWindow();
+                                      parentWindow.callback(item);
                                     }
-                                    parentWindow.callback(item);
-                                    callParentRefresh();
-                                  }
-                                }, useButtonText);
-      itemPanel.addChild(useButton);
+                                    else if (chooseAndStay === true) {
+                                      parentWindow.callback(item);
+                                      callParentRefresh();
+                                    }
+                                    else {
+                                      item.use();
+                                      if (item.active === false) {
+                                        itemPanel.visible = false;
+                                      }
+                                      parentWindow.callback(item);
+                                      callParentRefresh();
+                                    }
+                                  }, useButtonText);
+        itemPanel.addChild(useButton);
+      }
       if (mode === 'buy' || mode ==='sell') {
         this.picker = new NumberPicker(PADDING, ITEMWINDOW_SIZE_Y + PADDING);
         itemPanel.addChild(this.picker.pickerPanel);
         parentWindow.picker = this.picker;
       }
     }
-  }
   return itemPanel;
 
   function callParentRefresh() {

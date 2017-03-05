@@ -1,3 +1,12 @@
+const SCREEN_NAMES = {
+  TOWN: 'town',
+  MARKET: 'market',
+  CHARACTER_SHEET: 'character-sheet',
+  INVENTORY: 'inventory',
+  BATTLE: 'battle',
+  MAPSCREEN: 'map'
+};
+
 const ITEM_COLORS = {
   normal : 0xffffff,
   food : 0xaaaaaa,

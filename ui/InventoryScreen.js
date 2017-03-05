@@ -25,20 +25,19 @@ function InventoryScreen(items, callback, mode) {
   var chooseAndStay = false;
   var marketMode = false;
   var useButtonText = "Use";
-  var windowBefore = windowManager.getNextInOrder();
+  this.windowBefore = windowManager.getNextInOrder();
   this.x = INV_POS_X;
   this.y = INV_POS_Y;
   this.sizex = INV_SIZE_X;
   this.sizey = INV_SIZE_Y;
   this.maxItemsInRow = MAX_ITEMS_IN_ROW;
   this.maxRows = MAX_ROWS;
-
   this.callback = callback;
 
   this.picker = null;
 
-  if (mode === 'use' || windowBefore === SCREEN_NAMES.BATTLE ||
-                        windowBefore === SCREEN_NAMES.MAPSCREEN) {
+  if (mode === 'use' || this.windowBefore === SCREEN_NAMES.BATTLE ||
+                        this.windowBefore === SCREEN_NAMES.MAPSCREEN) {
     mode = 'use';
   }
   else if (mode === 'choose') {

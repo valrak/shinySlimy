@@ -17,7 +17,7 @@ function Item(name) {
 
   this.use = function() {
 		// manage consumables
-		if (this.params.consumable === 1) {
+		if (this.params.consumable !== 0) {
 			if (this.params.stackable === 1) {
 				if (this.amount > 1) {
 					this.amount--;
