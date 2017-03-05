@@ -32,6 +32,7 @@ function InventoryScreen(items, callback, mode) {
   this.sizey = INV_SIZE_Y;
   this.maxItemsInRow = MAX_ITEMS_IN_ROW;
   this.maxRows = MAX_ROWS;
+
   this.callback = callback;
 
   this.picker = null;

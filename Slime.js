@@ -17,6 +17,8 @@ function Slime(name) {
 	this.id = 0;
 	this.name = name;
 	this.slime = true;
+	this.mod = "normal";
+
 	if (this.name !== "slime") {
 		this.slime = false;
 	}

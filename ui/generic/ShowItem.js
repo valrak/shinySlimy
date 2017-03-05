@@ -5,11 +5,6 @@ function ShowItem(item, mode, parentWindow) {
 //var showItem = (item, mode, parentWindow) => {
   windowBefore = parentWindow.WINDOW_NAME;
 
-  const INV_POS_X = 120;
-  const INV_POS_Y = 30;
-  const INV_SIZE_X = 100;
-  const INV_SIZE_Y = 110;
-
   const BUTTON_SIZE_X = 18;
   const BUTTON_SIZE_Y = 18;
   const LARGE_BUTTON_MOD = 18;
@@ -131,15 +126,15 @@ function ShowItem(item, mode, parentWindow) {
                                   }
                                   else if (chooseAndStay === true) {
                                     parentWindow.callback(item);
-                                    parentWindow.refresh();
+                                    callParentRefresh();
                                   }
                                   else {
                                     item.use();
                                     if (item.active === false) {
                                       itemPanel.visible = false;
                                     }
-
-                                    parentWindow.refresh();
+                                    parentWindow.callback(item);
+                                    callParentRefresh();
                                   }
                                 }, useButtonText);
       itemPanel.addChild(useButton);
@@ -151,4 +146,12 @@ function ShowItem(item, mode, parentWindow) {
     }
   }
   return itemPanel;
+
+  function callParentRefresh() {
+    if (typeof parentWindow !== 'undefined') {
+      if (typeof parentWindow.callback === 'function') {
+        parentWindow.refresh();
+      }
+    }
+  }
 }

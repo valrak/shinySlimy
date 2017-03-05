@@ -19,6 +19,9 @@ function ProspectScreen(x, y, callback, player, opposition, items) {
   var showItemWindow = (item, mode, parentWindow) => {
     itemPanel = new ShowItem(item, mode, parentWindow);
   };
+  var showMonsterWindow = (monster, parentWindow) => {
+    monsterPanel = new ShowMonster(monster, "splash", parentWindow);
+  };
 
   var messageText = new Phaser.BitmapText(game, 7,
                                     PADDING,
@@ -72,6 +75,7 @@ function ProspectScreen(x, y, callback, player, opposition, items) {
       monsterButton.loadTexture(monsterSprite.texture);
       monsterButton.smoothed = false;
       prospectPanel.addChild(monsterButton);
+      monsterButton.events.onInputUp.add(showMonsterWindow.bind(this, opposition.slimes[monster], this));
       xOffset += offset;
     }
 
@@ -107,6 +111,9 @@ function ProspectScreen(x, y, callback, player, opposition, items) {
     prospectPanel.destroy(true);
     if (typeof itemPanel != 'undefined' && itemPanel !== null) {
       itemPanel.destroy(true);
+    }
+    if (typeof monsterPanel != 'undefined' && monsterPanel !== null) {
+      monsterPanel.destroy(true);
     }
     prospectPanel = null;
   }
