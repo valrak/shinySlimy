@@ -19,6 +19,9 @@ function Slime(name) {
 	this.slime = true;
 	this.mod = "normal";
 	this.type = monstersData[name].type;
+	if (typeof monstersData[name].description !== 'undefined') {
+		this.description = monstersData[name].description;
+	}
 
 	this.drops = new Map();
 	if (typeof monstersData[name].drops !== 'undefined') {
