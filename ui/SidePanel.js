@@ -37,7 +37,13 @@ function SidePanel() {
   };
 
   inventoryActionOnClick = function() {
-    new InventoryScreen(player.items);
+    if (windowManager.getNextInOrder() === SCREEN_NAMES.BATTLE) {
+      var battleWindow = windowManager.getNextInOrderObject();
+      new InventoryScreen(player.items, battleWindow.itemUse, "use");
+    }
+    else {
+      new InventoryScreen(player.items);
+    }
   };
 
   characterActionOnClick = function() {

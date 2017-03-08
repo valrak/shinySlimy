@@ -16,9 +16,18 @@ function WindowManager() {
   };
 
   this.getNextInOrder = function() {
-
     if (this.order.length > 0) {
       return this.order[this.order.length - 1];
+    }
+    else {
+      return null;
+    }
+  };
+
+  this.getNextInOrderObject = function() {
+    if (this.order.length > 0) {
+      var windowName = this.order[this.order.length - 1];
+      return this.windows.get(windowName);
     }
     else {
       return null;
@@ -77,5 +86,5 @@ function WindowManager() {
       this.setWindow(this.getNextInOrder(), true);
     }
   };
-  
+
 }

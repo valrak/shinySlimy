@@ -44,7 +44,7 @@ function BattleScreen(outsideCallback, player, opposition, items) {
           slimes.set(slime.id, slime);
       }
     windowManager.register(WINDOW_NAME, this);
-    signalManager.itemUseSignal.add(itemUse, item);
+    //signalManager.itemUseSignal.add(itemUse, item);
     marked = [];
     // main panel
     battleScreen = createPanel(BATTLE_POS_X, BATTLE_POS_Y, BATTLE_SIZE_X, BATTLE_SIZE_Y);
@@ -377,13 +377,13 @@ function BattleScreen(outsideCallback, player, opposition, items) {
     }
   }
 
-  function itemUse(item) {
+  this.itemUse = function(item, onWhat) {
     if (typeof item !== 'undefined' && item !== null) {
-      // TODO: item usage
+      console.log(item.name);
     }
-  }
+  };
 
-  function callback() {
+  function callback(thing) {
     refresh();
   }
 

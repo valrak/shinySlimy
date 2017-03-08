@@ -28,6 +28,7 @@ function ShowItem(item, mode, parentWindow) {
   if (mode === 'use' || parentWindow.windowBefore === SCREEN_NAMES.BATTLE ||
                         parentWindow.windowBefore === SCREEN_NAMES.MAPSCREEN) {
     useButtonText = "Use";
+    chooseMode = true;
   }
   else if (mode === 'choose') {
     chooseMode = true;
